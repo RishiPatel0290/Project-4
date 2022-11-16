@@ -22,7 +22,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="131.0" prefWidth="171.0" text="Current Orders" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openCurrentOrdersWindow" prefHeight="131.0" prefWidth="171.0" text="Current Orders" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <graphic>
                   <ImageView fx:id="currentOrders" fitHeight="116.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -34,7 +34,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="137.0" prefWidth="171.0" text="Chicago Style">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openChicagoWindow" prefHeight="137.0" prefWidth="171.0" text="Chicago Style">
                <graphic>
                   <ImageView fx:id="chicagoStyle" fitHeight="106.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -46,7 +46,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="119.0" prefWidth="139.0" text="NY Style" GridPane.columnIndex="1">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openNYWindow" prefHeight="119.0" prefWidth="139.0" text="NY Style" GridPane.columnIndex="1">
                <graphic>
                   <ImageView fx:id="nyStyle" fitHeight="107.0" fitWidth="153.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,7 +58,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="130.0" prefWidth="171.0" text="Store Orders" GridPane.rowIndex="1">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openStoreOrdersWindow" prefHeight="130.0" prefWidth="171.0" text="Store Orders" GridPane.rowIndex="1">
                <font>
                   <Font size="17.0" />
                </font>
