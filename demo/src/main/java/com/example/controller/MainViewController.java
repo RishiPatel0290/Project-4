@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,16 +16,16 @@ import java.util.ResourceBundle;
 public class MainViewController implements Initializable {
 
     @FXML
-    private ImageView nyStyle;
+    private ImageView nyStyle = new ImageView();
 
     @FXML
-    private ImageView chicagoStyle;
+    private ImageView chicagoStyle = new ImageView();
 
     @FXML
-    private ImageView currentOrders;
+    private ImageView currentOrders = new ImageView();
 
     @FXML
-    private ImageView storeOrders;
+    private ImageView storeOrders = new ImageView();
 
 
 
@@ -86,7 +85,7 @@ public class MainViewController implements Initializable {
     void openCurrentOrdersWindow(ActionEvent event) throws IOException {
 
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ChicagoStyle-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CurrentOrder-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene);
@@ -109,7 +108,7 @@ public class MainViewController implements Initializable {
     @FXML
     void openStoreOrdersWindow(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ChicagoStyle-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("StoreOrders-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene);
