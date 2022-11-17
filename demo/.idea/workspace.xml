@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71948384-5208-4453-b1fd-5e5d08cb6759" name="Changes" comment="" />
+    <list default="true" id="71948384-5208-4453-b1fd-5e5d08cb6759" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/controller/CurrentOrder-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/Project-4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/Project-4.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,14 +49,16 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_directory_selection": "/Users/rishipatel/Documents/College/School_Subjects/Junior/Software Meth/Projects/Project4/Project-4/demo/src/main/resources/com/example/controller",
     "last_opened_file_path": "/Users/rishipatel/Documents/College/School_Subjects/Junior/Software Meth/Projects/Project4/Project-4/demo/src/main/resources/controller",
-    "project.structure.last.edited": "SDKs",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model" />
+      <recent name="com.example.controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/controller" />
@@ -65,7 +75,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="com.example.controller.HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.example.controller.HelloApplication" />
       <module name="demo" />
       <extension name="coverage">
@@ -80,7 +92,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.example.controller.HelloApplication" />
+        <item itemvalue="Application.HelloApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -105,5 +117,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
