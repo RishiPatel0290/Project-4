@@ -34,16 +34,16 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <RadioButton mnemonicParsing="false" text="small">
+            <RadioButton fx:id="small" mnemonicParsing="false" text="small">
                <toggleGroup>
                   <ToggleGroup fx:id="chicagoSizeToggle" />
                </toggleGroup></RadioButton>
-            <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="104.0" text="medium" toggleGroup="$chicagoSizeToggle" GridPane.columnIndex="1" />
-            <RadioButton mnemonicParsing="false" text="large" toggleGroup="$chicagoSizeToggle" GridPane.columnIndex="2" />
+            <RadioButton fx:id="medium" mnemonicParsing="false" prefHeight="18.0" prefWidth="104.0" text="medium" toggleGroup="$chicagoSizeToggle" GridPane.columnIndex="1" />
+            <RadioButton fx:id="large" mnemonicParsing="false" text="large" toggleGroup="$chicagoSizeToggle" GridPane.columnIndex="2" />
          </children>
       </GridPane>
       <Text layoutX="14.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crust:" />
-      <TextField editable="false" layoutX="61.0" layoutY="144.0" text="Pan" />
+      <TextField fx:id="chicagoCrust" editable="false" layoutX="61.0" layoutY="144.0" text="Pan" />
       <Text layoutX="19.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Toppings" />
       <ScrollPane layoutX="7.0" layoutY="209.0" prefHeight="147.0" prefWidth="178.0">
          <content>
@@ -51,7 +51,7 @@
          </content>
       </ScrollPane>
       <Text layoutX="12.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pizza Price $" />
-      <TextField editable="false" layoutX="86.0" layoutY="368.0" text="45" />
+      <TextField fx:id="chicagoPrice" editable="false" layoutX="86.0" layoutY="368.0" text="45" />
       <ImageView fx:id="chicagoPizzaImage" fitHeight="138.0" fitWidth="169.0" layoutX="425.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../images/chicago.png" />

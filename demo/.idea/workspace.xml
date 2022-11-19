@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71948384-5208-4453-b1fd-5e5d08cb6759" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/BBQChicken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/BuildYourOwn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Deluxe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Meatzza.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/ChicagoPizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ChicagoPizza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/NYPizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/NYPizza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Pizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Pizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/ChicagoStyleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ChicagoStyleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/controller/ChicagoStyle-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/controller/ChicagoStyle-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
