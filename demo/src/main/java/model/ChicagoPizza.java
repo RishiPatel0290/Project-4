@@ -1,8 +1,13 @@
 package model;
 
-public class ChicagoPizza implements PizzaFactory{
+public class ChicagoPizza extends Pizza implements PizzaFactory{
+
+
+
+    private double price;
     @Override
     public Pizza createDeluxe() {
+
         return null;
     }
 
@@ -19,5 +24,20 @@ public class ChicagoPizza implements PizzaFactory{
     @Override
     public Pizza createBuildYourOwn() {
         return null;
+    }
+
+    @Override
+    public boolean add(Object obj) {
+        return false;
+    }
+
+    @Override
+    public boolean remove(Object obj) {
+        return false;
+    }
+
+    @Override
+    public double price() {
+        return 0;
     }
 }
