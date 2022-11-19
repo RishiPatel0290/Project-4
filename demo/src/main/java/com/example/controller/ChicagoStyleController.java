@@ -4,9 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -19,10 +17,11 @@ public class ChicagoStyleController implements Initializable {
 
 
     @FXML
-    private Text chicagoPrice;
+    private TextField chicagoPrice;
+
 
     @FXML
-    private Text chicagoCrust;
+    private TextField chicagoCrust;
 
 
     @FXML
@@ -57,7 +56,7 @@ public class ChicagoStyleController implements Initializable {
 
     /** *
      *
-     * if no flavor is passed then regular image is displayed else relevant img is displayed
+     * Manipulates image
      *
      * */
 
@@ -88,7 +87,7 @@ public class ChicagoStyleController implements Initializable {
 
     /**
      *
-     * purpose: to set up  images & combo boxes
+     * Set up list view, image, and  combo box
      *
      * */
     @Override
@@ -118,6 +117,13 @@ public class ChicagoStyleController implements Initializable {
 
     }
 
+
+
+
+
+     /**
+      * when flavor is picked, image is updated
+      * */
     @FXML
     public void chicagoFlavorPicked(ActionEvent actionEvent){
         // set relevant image based on flavor selected
@@ -128,6 +134,11 @@ public class ChicagoStyleController implements Initializable {
 
 
 
+
+    /**
+     *
+     * when ">>" is clicked topping is added to selected toppings
+     * */
     @FXML
     public void addTopping(ActionEvent actionEvent){
 
@@ -143,8 +154,18 @@ public class ChicagoStyleController implements Initializable {
         }
          selectedToppings.getItems().add(selectedTopping);
 
+    }
 
 
+    /**
+     *
+     * when "<<" is selected topping is removed from selected toppings
+     * */
 
+    @FXML
+    public void removeTopping(ActionEvent actionEvent){
+
+        String selectedTopping = selectedToppings.getSelectionModel().getSelectedItem();
+        selectedToppings.getItems().remove(selectedTopping);
     }
 }
