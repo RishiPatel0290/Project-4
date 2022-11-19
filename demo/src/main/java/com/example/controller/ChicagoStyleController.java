@@ -94,6 +94,7 @@ public class ChicagoStyleController implements Initializable {
 
 
 
+
         // set default image
         setChicagoPizzaImage("");
 
