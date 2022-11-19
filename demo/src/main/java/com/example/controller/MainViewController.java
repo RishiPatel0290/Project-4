@@ -72,45 +72,54 @@ public class MainViewController implements Initializable {
 
 
     @FXML
-    void openChicagoWindow(ActionEvent event) throws IOException{
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ChicagoStyle-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void openCurrentOrdersWindow(ActionEvent event) throws IOException {
-
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CurrentOrder-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
-
-
-    }
-
-    @FXML
     void openNYWindow(ActionEvent event) throws IOException {
 
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("NYStyle-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("NY Style");
         stage.setScene(scene);
         stage.show();
     }
+
+
+    @FXML
+    void openChicagoWindow(ActionEvent event) throws IOException{
+
+        try{
+
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ChicagoStyle-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle("Chicago Style");
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e ){
+            System.out.println(e.fillInStackTrace());
+        }
+    }
+
+    @FXML
+    void openCurrentOrderWindow(ActionEvent event) throws IOException {
+
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CurrentOrder-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Current Order Style");
+        stage.setScene(scene);
+        stage.show();
+
+
+    }
+
+
 
     @FXML
     void openStoreOrdersWindow(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("StoreOrders-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Store Orders");
         stage.setScene(scene);
         stage.show();
     }
