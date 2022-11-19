@@ -6,6 +6,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -33,9 +34,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <RadioButton mnemonicParsing="false" text="small" />
-            <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="104.0" text="medium" GridPane.columnIndex="1" />
-            <RadioButton mnemonicParsing="false" text="large" GridPane.columnIndex="2" />
+            <RadioButton mnemonicParsing="false" text="small">
+               <toggleGroup>
+                  <ToggleGroup fx:id="chicagoSizeToggle" />
+               </toggleGroup></RadioButton>
+            <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="104.0" text="medium" toggleGroup="$chicagoSizeToggle" GridPane.columnIndex="1" />
+            <RadioButton mnemonicParsing="false" text="large" toggleGroup="$chicagoSizeToggle" GridPane.columnIndex="2" />
          </children>
       </GridPane>
       <Text layoutX="14.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crust:" />
