@@ -1,5 +1,4 @@
 package com.example.controller;
-
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,8 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,6 +13,11 @@ public class ChicagoStyleController implements Initializable {
 
 
 
+    @FXML
+    private Button addButton;
+
+    @FXML
+    private Button removeButton;
     @FXML
     private TextField chicagoPrice;
 
@@ -73,14 +75,8 @@ public class ChicagoStyleController implements Initializable {
         }else{
             imageName = "chicago.png";
         }
-        try {
-            Image chicago = new Image("file:src/images/"+imageName);
-            chicagoPizzaImage.setImage(chicago);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-
-
+        Image chicago = new Image("file:src/images/"+imageName);
+        chicagoPizzaImage.setImage(chicago);
     }
 
 
@@ -92,34 +88,28 @@ public class ChicagoStyleController implements Initializable {
      * */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // initalize flavor combo box
+        addButton.setDisable(true);
+        removeButton.setDisable(true);
         chicagoFlavors.setItems(FXCollections.observableArrayList("Deluxe","BBQ Chicken","Meatzza","Build your own"));
-
-        availableChicagoToppings.getItems().addAll("Sausage",
-                "pepperoni",
-                "green pepper",
-                "onion",
-                "mushroom",
-                "BBQ chicken",
-                "provolone",
-                "cheddar",
-                "beef",
-                "ham",
-                "Pineapple",
-                "Spinach",
-                "Black olives");
-
-
-
-
+        availableChicagoToppings.getItems().addAll("Sausage", "pepperoni", "green pepper", "onion", "mushroom", "BBQ chicken", "provolone", "cheddar", "beef", "ham", "Pineapple", "Spinach", "Black olives");
         // set default image
         setChicagoPizzaImage("");
-
     }
 
 
 
 
+    private void setChicagoCrust(String flavor){
+        if(flavor.equalsIgnoreCase("Deluxe")){
+            chicagoCrust.setText("Deep Dish");
+        }else if (flavor.equalsIgnoreCase("BBQ Chicken")){
+            chicagoCrust.setText("Pan");
+        }else if (flavor.equalsIgnoreCase("Meatzza")){
+            chicagoCrust.setText("Stuffed");
+        }else { // Build your Own
+            chicagoCrust.setText("Pan");
+        }
+    }
 
      /**
       * when flavor is picked, image is updated
@@ -128,10 +118,34 @@ public class ChicagoStyleController implements Initializable {
     public void chicagoFlavorPicked(ActionEvent actionEvent){
         // set relevant image based on flavor selected
         String flavorPicked = chicagoFlavors.getValue();
+        // setting image
         setChicagoPizzaImage(flavorPicked);
+        // crust
+        setChicagoCrust(flavorPicked);
+        // toppings
+        setSelectedToppings(flavorPicked);
     }
 
 
+
+
+    private void setSelectedToppings(String flavor) {
+        if(flavor.equalsIgnoreCase("Build your own")){
+            selectedToppings.getItems().clear();
+            addButton.setDisable(false);
+            removeButton.setDisable(false);
+            return;
+        }
+        addButton.setDisable(true);
+        removeButton.setDisable(true);
+        if(flavor.equalsIgnoreCase("Deluxe")){
+            selectedToppings.setItems(FXCollections.observableArrayList("Sausage","pepperoni","green pepper","onion","mushroom"));
+        }else if (flavor.equalsIgnoreCase("BBQ Chicken")){
+            selectedToppings.setItems(FXCollections.observableArrayList("BBQ chicken", "green pepper", "provolone", "cheddar"));
+        }else{
+            selectedToppings.setItems(FXCollections.observableArrayList("Sausage", "pepperoni", "Beef", "Ham"));
+        }
+    }
 
 
 
@@ -143,14 +157,16 @@ public class ChicagoStyleController implements Initializable {
     public void addTopping(ActionEvent actionEvent){
 
         String selectedTopping = availableChicagoToppings.getSelectionModel().getSelectedItem();
+        if(selectedTopping==null){
+            return;
+
+        }
         for(String item : selectedToppings.getItems()){
             boolean found = false;
 
             if(item.equalsIgnoreCase(selectedTopping)){
                 return;
             }
-
-
         }
          selectedToppings.getItems().add(selectedTopping);
 
@@ -164,8 +180,8 @@ public class ChicagoStyleController implements Initializable {
 
     @FXML
     public void removeTopping(ActionEvent actionEvent){
-
         String selectedTopping = selectedToppings.getSelectionModel().getSelectedItem();
+        if(selectedTopping==null){return;}
         selectedToppings.getItems().remove(selectedTopping);
     }
 }
