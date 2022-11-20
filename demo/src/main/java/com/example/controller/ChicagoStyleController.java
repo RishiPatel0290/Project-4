@@ -17,6 +17,12 @@ import java.util.ResourceBundle;
 public class ChicagoStyleController implements Initializable {
 
 
+    // constants
+
+    private final int SMALL = 1;
+    private final int MEDIUM = 2;
+    private final int LARGE = 3;
+
 
     @FXML
     private Button addButton;
@@ -64,6 +70,7 @@ public class ChicagoStyleController implements Initializable {
     private PizzaFactory pizzaFactory = new ChicagoPizza();
 
 
+    // this will be added to list of order
     private Pizza pizza;
 
 
@@ -122,6 +129,17 @@ public class ChicagoStyleController implements Initializable {
 
 
 
+    private Size getSize(){
+        if(small.isSelected()){
+            return Size.SMALL;
+        }else if (medium.isSelected()){
+            return Size.MEDIUM;
+        }else{
+            return Size.LARGE;
+        }
+    }
+
+
 
 
     /**
@@ -131,10 +149,17 @@ public class ChicagoStyleController implements Initializable {
      * */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // add & remove button disabled
         addButton.setDisable(true);
         removeButton.setDisable(true);
+
+        // populate flavors
         chicagoFlavors.setItems(FXCollections.observableArrayList("Deluxe","BBQ Chicken","Meatzza","Build your own"));
+
+        //populate available toppings
         availableChicagoToppings.getItems().addAll("Sausage", "pepperoni", "green pepper", "onion", "mushroom", "BBQ chicken", "provolone", "cheddar", "beef", "ham", "Pineapple", "Spinach", "Black olives");
+
         // set default image
         setChicagoPizzaImage("");
     }
@@ -160,10 +185,10 @@ public class ChicagoStyleController implements Initializable {
     @FXML
     public void chicagoFlavorPicked(ActionEvent actionEvent){
 
-        // set relevant image based on flavor selected
+
         String flavorPicked = chicagoFlavors.getValue();
 
-        // setting image
+        // set image based on flavor selected
         setChicagoPizzaImage(flavorPicked);
 
         if(flavorPicked.equalsIgnoreCase("deluxe")){
@@ -175,11 +200,18 @@ public class ChicagoStyleController implements Initializable {
         }else {
             pizza = pizzaFactory.createBuildYourOwn();
         }
-        // crust
-        setChicagoCrust(flavorPicked);
-        // toppings
-        setSelectedToppings(flavorPicked);
+
+        // update default size which is small
+        pizza.setSize(getSize());
         updatePrice();
+
+
+        // crust is displayed
+        setChicagoCrust(flavorPicked);
+
+        // selected toppings showed on UI
+        setSelectedToppings(flavorPicked);
+
     }
 
 

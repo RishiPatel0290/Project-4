@@ -2,9 +2,9 @@ package model;
 
 public class BuildYourOwn extends Pizza{
 
-    private final double SMALL_PRICE = 15.99;
-    private final double MEDIUM_PRICE = 17.99;
-    private final double LARGE_PRICE = 19.99;
+    private final double SMALL_PRICE = 8.99;
+    private final double MEDIUM_PRICE = 10.99;
+    private final double LARGE_PRICE = 12.99;
 
 
     @Override
@@ -28,7 +28,10 @@ public class BuildYourOwn extends Pizza{
             price+=LARGE_PRICE;
         }
 
-        price+= (getToppings().size()*1.59);
+        if(getToppings()!=null){
+            price+= (getToppings().size()*1.59);
+        }
+
 
         return  price;
 
