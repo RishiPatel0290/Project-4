@@ -1,6 +1,13 @@
 package model;
 
 public class Meatzza extends Pizza{
+
+    private final double SMALL_PRICE = 15.99;
+    private final double MEDIUM_PRICE = 17.99;
+    private final double LARGE_PRICE = 19.99;
+
+
+
     @Override
     public boolean add(Object obj) {
         return false;
@@ -13,6 +20,13 @@ public class Meatzza extends Pizza{
 
     @Override
     public double price() {
-        return 0;
+        if(getSize()==Size.SMALL){
+            return SMALL_PRICE;
+        }else if(getSize()==Size.MEDIUM){
+            return MEDIUM_PRICE;
+        }else{
+            return LARGE_PRICE;
+        }
+
     }
 }

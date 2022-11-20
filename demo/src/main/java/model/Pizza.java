@@ -8,10 +8,17 @@ public abstract class Pizza implements Customizable {
     private Crust crust;
     private Size size;
 
+
+    public Pizza(){
+
+    }
+
     public ArrayList<Topping> getToppings() {
         return toppings;
     }
 
+
+    // getters & Setters
     public void setToppings(ArrayList<Topping> toppings) {
         this.toppings = toppings;
     }
@@ -32,5 +39,8 @@ public abstract class Pizza implements Customizable {
         this.size = size;
     }
 
+
     public abstract double price();
+
+
 }

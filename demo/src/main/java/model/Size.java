@@ -1,4 +1,10 @@
 package model;
 
-public class Size {
+
+
+
+public enum Size {
+    SMALL,
+    MEDIUM,
+    LARGE;
 }

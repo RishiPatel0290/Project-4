@@ -34,12 +34,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <RadioButton fx:id="small" mnemonicParsing="false" text="small">
+            <RadioButton fx:id="small" mnemonicParsing="false" onAction="#smallSelected" selected="true" text="small">
                <toggleGroup>
                   <ToggleGroup fx:id="chicagoSizeToggle" />
                </toggleGroup></RadioButton>
-            <RadioButton fx:id="medium" mnemonicParsing="false" prefHeight="18.0" prefWidth="104.0" text="medium" toggleGroup="$chicagoSizeToggle" GridPane.columnIndex="1" />
-            <RadioButton fx:id="large" mnemonicParsing="false" text="large" toggleGroup="$chicagoSizeToggle" GridPane.columnIndex="2" />
+            <RadioButton fx:id="medium" mnemonicParsing="false" onAction="#mediumSelected" prefHeight="18.0" prefWidth="104.0" text="medium" toggleGroup="$chicagoSizeToggle" GridPane.columnIndex="1" />
+            <RadioButton fx:id="large" mnemonicParsing="false" onAction="#largeSelected" text="large" toggleGroup="$chicagoSizeToggle" GridPane.columnIndex="2" />
          </children>
       </GridPane>
       <Text layoutX="14.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crust:" />

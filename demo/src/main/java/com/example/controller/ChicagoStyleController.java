@@ -6,6 +6,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.ChicagoPizza;
+import model.Pizza;
+import model.PizzaFactory;
+import model.Size;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,6 +33,7 @@ public class ChicagoStyleController implements Initializable {
 
     @FXML
     private RadioButton small;
+
 
 
     @FXML
@@ -55,6 +61,13 @@ public class ChicagoStyleController implements Initializable {
     private ListView<String> selectedToppings = new ListView<>();
 
 
+    private PizzaFactory pizzaFactory = new ChicagoPizza();
+
+
+    private Pizza pizza;
+
+
+
 
     /** *
      *
@@ -63,6 +76,8 @@ public class ChicagoStyleController implements Initializable {
      * */
 
     public void setChicagoPizzaImage(String flavor){
+
+
         String imageName;
         if(flavor.equalsIgnoreCase("Deluxe")){
             imageName = "chicagoDeluxe.png";
@@ -78,6 +93,34 @@ public class ChicagoStyleController implements Initializable {
         Image chicago = new Image("file:src/images/"+imageName);
         chicagoPizzaImage.setImage(chicago);
     }
+
+
+
+
+    @FXML
+    public void smallSelected(){
+        pizza.setSize(Size.SMALL);
+        updatePrice();
+    }
+
+    @FXML
+    public void mediumSelected(){
+        pizza.setSize(Size.MEDIUM);
+        updatePrice();
+    }
+
+
+    @FXML
+    public void largeSelected(){
+        pizza.setSize(Size.LARGE);
+        updatePrice();
+    }
+
+    private void updatePrice() {
+        chicagoPrice.setText(Double.toString(pizza.price()));
+    }
+
+
 
 
 
@@ -116,14 +159,27 @@ public class ChicagoStyleController implements Initializable {
       * */
     @FXML
     public void chicagoFlavorPicked(ActionEvent actionEvent){
+
         // set relevant image based on flavor selected
         String flavorPicked = chicagoFlavors.getValue();
+
         // setting image
         setChicagoPizzaImage(flavorPicked);
+
+        if(flavorPicked.equalsIgnoreCase("deluxe")){
+            pizza = pizzaFactory.createDeluxe();
+        }else if(flavorPicked.equalsIgnoreCase("meatzza")){
+            pizza = pizzaFactory.createMeatzza();
+        }else if(flavorPicked.equalsIgnoreCase("BBQ Chicken")){
+            pizza = pizzaFactory.createBBQChicken();
+        }else {
+            pizza = pizzaFactory.createBuildYourOwn();
+        }
         // crust
         setChicagoCrust(flavorPicked);
         // toppings
         setSelectedToppings(flavorPicked);
+        updatePrice();
     }
 
 

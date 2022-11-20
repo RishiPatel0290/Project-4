@@ -1,6 +1,11 @@
 package model;
 
+import java.util.ArrayList;
+
 public class StoreOrder implements Customizable{
+
+    private ArrayList<Order> storeOrders;
+
     @Override
     public boolean add(Object obj) {
         return false;
@@ -10,4 +15,5 @@ public class StoreOrder implements Customizable{
     public boolean remove(Object obj) {
         return false;
     }
+
 }

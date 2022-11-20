@@ -1,43 +1,36 @@
 package model;
 
-public class ChicagoPizza extends Pizza implements PizzaFactory{
+public class ChicagoPizza implements PizzaFactory{
 
 
 
-    private double price;
     @Override
     public Pizza createDeluxe() {
-
-        return null;
+        Deluxe deluxe = new Deluxe();
+        return deluxe;
     }
 
     @Override
     public Pizza createMeatzza() {
-        return null;
+
+        Meatzza meatzza = new Meatzza();
+        return meatzza;
+
     }
 
     @Override
     public Pizza createBBQChicken() {
-        return null;
+        BBQChicken bbqChicken = new BBQChicken();
+        return bbqChicken;
     }
 
     @Override
     public Pizza createBuildYourOwn() {
-        return null;
+        BuildYourOwn buildYourOwn = new BuildYourOwn();
+        return buildYourOwn;
+
     }
 
-    @Override
-    public boolean add(Object obj) {
-        return false;
-    }
 
-    @Override
-    public boolean remove(Object obj) {
-        return false;
-    }
 
-    @Override
-    public double price() {
-        return 0;
-    }
 }
