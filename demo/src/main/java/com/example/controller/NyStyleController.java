@@ -3,17 +3,26 @@ package com.example.controller;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class NyStyleController implements Initializable {
+
+
+    private final int SMALL = 1;
+    private final int MEDIUM = 2;
+    private final int LARGE = 3;
 
     @FXML
     private Button nyAddToOrder;
@@ -195,17 +204,20 @@ public class NyStyleController implements Initializable {
         updatePrice();
 
 
+
         // crust is displayed
         setNyCrust(flavorPicked);
 
         // selected toppings showed on UI
         setNySelectedToppings(flavorPicked);
 
+        nyAddToOrder.setDisable(false);
+
 
     }
 
     @FXML
-    public void nyAddTopping(ActionEvent actionEvent){
+    public void nyAddTopping(ActionEvent actionEvent) throws IOException {
         String selectedTopping = availableNyToppings.getSelectionModel().getSelectedItem();
         if(selectedTopping==null){
             return;
@@ -221,18 +233,45 @@ public class NyStyleController implements Initializable {
         }
         nySelectedToppings.getItems().add(selectedTopping);
 
+        if(pizza.getToppings()==null){
+            pizza.setToppings(new ArrayList<Topping>());
+        }
+
+        if(nyFlavors.getValue().equalsIgnoreCase("Build your own") && pizza.getToppings().size()>=6){
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ToppingAlert-view.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle("Topping Alert");
+            stage.setScene(scene);
+            stage.show();
+
+            return;
+        }
+
+        // pizza.getToppings().add(new Topping(selectedTopping));
+
+        updatePrice();
+
+
     }
 
     @FXML
     public void removeNyTopping(ActionEvent actionEvent){
         String selectedTopping = nySelectedToppings.getSelectionModel().getSelectedItem();
         if(selectedTopping==null){return;}
+        int indexToBeRemoved = nySelectedToppings.getSelectionModel().getSelectedIndex();
         nySelectedToppings.getItems().remove(selectedTopping);
+        pizza.getToppings().remove(indexToBeRemoved);
+        updatePrice();
     }
 
     @FXML
     public void nyAddToCurrentOrder(){
-         pizza.setToppings(new ArrayList<Topping>());
+
+        if(pizza.getToppings()==null){
+            pizza.setToppings(new ArrayList<Topping>());
+        }
+
 
          for(String top: nySelectedToppings.getItems()){
              pizza.getToppings().add(new Topping(top));
@@ -240,6 +279,7 @@ public class NyStyleController implements Initializable {
 
 
          CurrentOrderController.currentOrder.add(pizza);
+         nyFlavorPicked(null);
 
     }
 
