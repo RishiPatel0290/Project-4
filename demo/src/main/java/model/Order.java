@@ -4,19 +4,22 @@ import java.util.ArrayList;
 
 public class Order implements Customizable{
 
+    private static final int STARTING_NUMBER = 1;
+    static int orderTracker = STARTING_NUMBER;
     private int orderNumber;
 
 
-    private ArrayList<Pizza>orderedItems;
+    private ArrayList<Pizza> orderedItems;
 
+    public Order(){
+        this.orderedItems = new ArrayList<Pizza>();
+        this.orderNumber = orderTracker;
+        orderTracker++;
+    }
 
-
-
-
-
-
-
-
+    public void clearOrder(){
+        this.orderedItems = new ArrayList<Pizza>();
+    }
 
     public int getOrderNumber() {
         return orderNumber;
@@ -45,4 +48,9 @@ public class Order implements Customizable{
         Pizza toBeRemoved = (Pizza) obj;
         return  orderedItems.remove(toBeRemoved);
     }
+
+    public ArrayList<Pizza> getItems() {
+        return this.orderedItems;
+    }
+
 }

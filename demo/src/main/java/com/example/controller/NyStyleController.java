@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import model.*;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class NyStyleController implements Initializable {
@@ -229,7 +230,18 @@ public class NyStyleController implements Initializable {
         nySelectedToppings.getItems().remove(selectedTopping);
     }
 
+    @FXML
+    public void nyAddToCurrentOrder(){
+         pizza.setToppings(new ArrayList<Topping>());
 
+         for(String top: nySelectedToppings.getItems()){
+             pizza.getToppings().add(new Topping(top));
+         }
+
+
+         CurrentOrderController.currentOrder.add(pizza);
+
+    }
 
 
 

@@ -34,7 +34,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <RadioButton fx:id="nySmall" mnemonicParsing="false" onAction="#nySmallSelected" text="small">
+                <RadioButton fx:id="nySmall" mnemonicParsing="false" onAction="#nySmallSelected" selected="true" text="small">
                <toggleGroup>
                   <ToggleGroup fx:id="nySizeToggle" />
                </toggleGroup></RadioButton>
@@ -60,7 +60,7 @@
         <Text layoutX="355.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Toppings" />
         <Button fx:id="nyAddButton" layoutX="256.0" layoutY="232.0" mnemonicParsing="false" onAction="#nyAddTopping" text="&gt;&gt;" />
         <Button fx:id="nyRemoveButton" layoutX="257.0" layoutY="279.0" mnemonicParsing="false" onAction="#removeNyTopping" text="&lt;&lt;" />
-        <Button layoutX="418.0" layoutY="355.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="104.0" text="Add to Order">
+        <Button layoutX="418.0" layoutY="355.0" mnemonicParsing="false" onAction="#nyAddToCurrentOrder" prefHeight="32.0" prefWidth="104.0" text="Add to Order">
             <font>
                 <Font size="15.0" />
             </font>

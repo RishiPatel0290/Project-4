@@ -1,16 +1,22 @@
 package com.example.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import model.Order;
+import model.Pizza;
 
-public class CurrentOrderController {
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    private Order currentOrder;
+public class CurrentOrderController implements Initializable {
+
+    static Order currentOrder = new Order();
+
 
     @FXML
-    private ListView<?> orderListView;
+    private ListView<String> orderListView;
 
     @FXML
     private TextField orderNumberTextField;
@@ -26,18 +32,36 @@ public class CurrentOrderController {
 
     @FXML
     void addOrderToStoreOrders(ActionEvent event) {
-
+       // add currentOrder to StoreOrder db
+        //reset current order
+        currentOrder = new Order();
     }
 
     @FXML
     void clearOrder(ActionEvent event) {
+      // reset current order
+       currentOrder.clearOrder();
 
     }
+
+
 
     @FXML
     void removePizzaFromOrder(ActionEvent event) {
 
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        orderNumberTextField.setText(  Integer.toString(currentOrder.getOrderNumber())  );
+
+        for(Pizza piz: currentOrder.getItems() ){
+            orderListView.getItems().add(piz.toString());
+        }
+
+
+    }
+
 
 }
 
@@ -46,25 +70,5 @@ public class CurrentOrderController {
 
 
 
-
-//package com.example.controller;
-//
-//
-//import model.Order;
-//
-//public class CurrentOrderController {
-//    private Order currentOrder;
-//
-//    public Order getCurrentOrder() {
-//        return currentOrder;
-//    }
-//
-//    public void setCurrentOrder(Order currentOrder) {
-//        this.currentOrder = currentOrder;
-//    }
-//
-//
-//
-//}
 
 
