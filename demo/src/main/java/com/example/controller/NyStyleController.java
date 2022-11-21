@@ -15,10 +15,8 @@ import java.util.ResourceBundle;
 
 public class NyStyleController implements Initializable {
 
-
-    private final int SMALL = 1;
-    private final int MEDIUM = 2;
-    private final int LARGE = 3;
+    @FXML
+    private Button nyAddToOrder;
 
     @FXML
     private Button nyAddButton;
@@ -173,6 +171,8 @@ public class NyStyleController implements Initializable {
 
 
         setNyPizzaImage("");
+
+        nyAddToOrder.setDisable(true);
     }
 
     @FXML
