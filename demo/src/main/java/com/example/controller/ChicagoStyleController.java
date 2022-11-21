@@ -2,27 +2,27 @@ package com.example.controller;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.*;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ChicagoStyleController implements Initializable {
 
-
-    // constants
-
-    private final int SMALL = 1;
-    private final int MEDIUM = 2;
-    private final int LARGE = 3;
-
-
     @FXML
     private Button addButton;
+
+    @FXML
+    private Button addToOrder;
 
     @FXML
     private Button removeButton;
@@ -165,6 +165,13 @@ public class ChicagoStyleController implements Initializable {
 
         // set default image
         setChicagoPizzaImage("");
+
+
+        // add to order must be disabled
+        addToOrder.setDisable(true);
+
+
+
     }
 
 
@@ -186,8 +193,21 @@ public class ChicagoStyleController implements Initializable {
 
 
     public void addToCurrentOrder(ActionEvent actionEvent){
-        currentOrderController.getCurrentOrder().add(pizza);
-        System.out.println(pizza + " ADDED TO CURRENT ORDER");
+
+        if(pizza.getToppings()==null){
+            pizza.setToppings(new ArrayList<Topping>());
+
+        }
+        for(String top: selectedToppings.getItems()){
+            pizza.getToppings().add(new Topping(top));
+        }
+
+
+        CurrentOrderController.currentOrder.add(pizza);
+        // have to make new pizza based on selected flavor
+        chicagoFlavorPicked(null);
+
+
     }
 
      /**
@@ -223,6 +243,10 @@ public class ChicagoStyleController implements Initializable {
         // selected toppings showed on UI
         setSelectedToppings(flavorPicked);
 
+
+        // have to enable add to order button
+        addToOrder.setDisable(false);
+
     }
 
 
@@ -253,7 +277,7 @@ public class ChicagoStyleController implements Initializable {
      * when ">>" is clicked topping is added to selected toppings
      * */
     @FXML
-    public void addTopping(ActionEvent actionEvent){
+    public void addTopping(ActionEvent actionEvent) throws IOException {
 
         String selectedTopping = availableChicagoToppings.getSelectionModel().getSelectedItem();
         if(selectedTopping==null){
@@ -267,7 +291,40 @@ public class ChicagoStyleController implements Initializable {
                 return;
             }
         }
-         selectedToppings.getItems().add(selectedTopping);
+
+        selectedToppings.getItems().add(selectedTopping);
+
+
+        if(pizza.getToppings()==null) {
+            pizza.setToppings(new ArrayList<Topping>());
+        }
+
+
+
+        // make alert if we have more than 7 toppings
+        if(chicagoFlavors.getValue().equalsIgnoreCase("Build your own") && pizza.getToppings().size()>=6){
+            // show alert
+
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ToppingAlert-view.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle("Topping Alert");
+            stage.setScene(scene);
+            stage.show();
+
+
+            return;
+        }
+
+
+        pizza.getToppings().add(new Topping(selectedTopping));
+
+
+        updatePrice();
+
+
+
+
 
     }
 
@@ -281,6 +338,9 @@ public class ChicagoStyleController implements Initializable {
     public void removeTopping(ActionEvent actionEvent){
         String selectedTopping = selectedToppings.getSelectionModel().getSelectedItem();
         if(selectedTopping==null){return;}
+        int indexToBeRemoved = selectedToppings.getSelectionModel().getSelectedIndex();
         selectedToppings.getItems().remove(selectedTopping);
+        pizza.getToppings().remove(indexToBeRemoved);
+        updatePrice();
     }
 }

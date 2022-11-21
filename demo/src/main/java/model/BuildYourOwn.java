@@ -7,6 +7,7 @@ public class BuildYourOwn extends Pizza{
     private final double LARGE_PRICE = 12.99;
 
 
+
     @Override
     public boolean add(Object obj) {
         return false;
@@ -28,7 +29,7 @@ public class BuildYourOwn extends Pizza{
             price+=LARGE_PRICE;
         }
 
-        if(getToppings()!=null){
+        if(getToppings()!=null) {
             price+= (getToppings().size()*1.59);
         }
 
