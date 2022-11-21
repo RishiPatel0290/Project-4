@@ -124,8 +124,11 @@ public class CurrentOrderController implements Initializable {
 
     @FXML
     void clearOrder(ActionEvent event) {
-        // remove all pizzas
+
+
+        // list view is updated
         orderListView.getItems().clear();
+
         currentOrder.clearOrder();
         updateSalesTaxTextField();
         updateSubTotalTextField();
@@ -138,18 +141,26 @@ public class CurrentOrderController implements Initializable {
     @FXML
     void removePizzaFromOrder(ActionEvent event) {
 
+        int pizzaToBeRemoved  = orderListView.getSelectionModel().getSelectedIndex();
+        currentOrder.getItems().remove(pizzaToBeRemoved);
+        // list view is updated
+        orderListView.getItems().remove(pizzaToBeRemoved);
+
+        // other fields are updated
+        updateSalesTaxTextField();
+        updateSubTotalTextField();
+        updateOrderTotalTextField();
+        updateOrderNumberTextField();
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         updateListView();
         updateSubTotalTextField();
         updateSalesTaxTextField();
         updateOrderTotalTextField();
         updateOrderNumberTextField();
-
-
     }
 
 
