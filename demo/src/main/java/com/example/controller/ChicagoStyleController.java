@@ -6,10 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.ChicagoPizza;
-import model.Pizza;
-import model.PizzaFactory;
-import model.Size;
+import model.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -70,8 +67,14 @@ public class ChicagoStyleController implements Initializable {
     private PizzaFactory pizzaFactory = new ChicagoPizza();
 
 
+
+
     // this will be added to list of order
     private Pizza pizza;
+
+
+    // need this to make Order obj global
+    private CurrentOrderController currentOrderController;
 
 
 
@@ -177,6 +180,14 @@ public class ChicagoStyleController implements Initializable {
         }else { // Build your Own
             chicagoCrust.setText("Pan");
         }
+    }
+
+
+
+
+    public void addToCurrentOrder(ActionEvent actionEvent){
+        currentOrderController.getCurrentOrder().add(pizza);
+        System.out.println(pizza + " ADDED TO CURRENT ORDER");
     }
 
      /**

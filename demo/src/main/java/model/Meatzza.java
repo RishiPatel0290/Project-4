@@ -29,4 +29,10 @@ public class Meatzza extends Pizza{
         }
 
     }
+
+
+    @Override
+    public String toString() {
+        return "Meatzza "+getToppings().toString()+", "+getSize().toString().toLowerCase()+", "+price();
+    }
 }

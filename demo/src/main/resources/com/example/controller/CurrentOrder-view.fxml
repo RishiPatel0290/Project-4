@@ -20,8 +20,8 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField layoutX="193.0" layoutY="74.0" />
-      <ListView layoutX="54.0" layoutY="113.0" prefHeight="174.0" prefWidth="492.0" />
+      <TextField fx:id="orderNumberTextField" editable="false" layoutX="193.0" layoutY="74.0" />
+      <ListView fx:id="orderListView" layoutX="54.0" layoutY="113.0" prefHeight="174.0" prefWidth="492.0" />
       <Label layoutX="65.0" layoutY="304.0" text="subtotal $">
          <font>
             <Font size="15.0" />
@@ -37,11 +37,11 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="136.0" layoutY="301.0" prefHeight="25.0" prefWidth="82.0" />
-      <TextField editable="false" layoutX="136.0" layoutY="346.0" prefHeight="25.0" prefWidth="82.0" />
-      <TextField editable="false" layoutX="340.0" layoutY="301.0" prefHeight="25.0" prefWidth="82.0" />
-      <Button layoutX="483.0" layoutY="301.0" mnemonicParsing="false" text="Remove Pizza" />
-      <Button layoutX="483.0" layoutY="346.0" mnemonicParsing="false" text="Clear Order" />
-      <Button layoutX="327.0" layoutY="346.0" mnemonicParsing="false" text="Place Order" />
+      <TextField fx:id="subTotalTextField" editable="false" layoutX="136.0" layoutY="301.0" prefHeight="25.0" prefWidth="82.0" />
+      <TextField fx:id="orderTotalTextField" editable="false" layoutX="136.0" layoutY="346.0" prefHeight="25.0" prefWidth="82.0" />
+      <TextField fx:id="salesTaxTextField" editable="false" layoutX="340.0" layoutY="301.0" prefHeight="25.0" prefWidth="82.0" />
+      <Button layoutX="483.0" layoutY="301.0" mnemonicParsing="false" onAction="#removePizzaFromOrder" text="Remove Pizza" />
+      <Button layoutX="483.0" layoutY="346.0" mnemonicParsing="false" onAction="#clearOrder" text="Clear Order" />
+      <Button layoutX="327.0" layoutY="346.0" mnemonicParsing="false" onAction="#addOrderToStoreOrders" text="Place Order" />
    </children>
 </AnchorPane>

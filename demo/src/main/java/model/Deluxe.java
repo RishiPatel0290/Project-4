@@ -37,4 +37,12 @@ public class Deluxe extends Pizza{
         }
 
     }
+
+    @Override
+    public String toString() {
+        return "Deluxe "+getToppings().toString()+", "+getSize().toString().toLowerCase()+", "+price();
+    }
+
+
+    // {flavor}(Ny|Chicago - {crust}), {top1,2...n},{size},${price}
 }

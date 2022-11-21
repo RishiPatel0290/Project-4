@@ -61,7 +61,7 @@
       <Button fx:id="addButton" layoutX="244.0" layoutY="232.0" mnemonicParsing="false" onAction="#addTopping" text="&gt;&gt;" />
       <Button fx:id="removeButton" layoutX="246.0" layoutY="279.0" mnemonicParsing="false" onAction="#removeTopping" text="&lt;&lt;" />
       <ListView fx:id="selectedToppings" layoutX="351.0" layoutY="210.0" prefHeight="138.0" prefWidth="231.0" />
-      <Button layoutX="410.0" layoutY="350.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="Add to Order">
+      <Button layoutX="410.0" layoutY="350.0" mnemonicParsing="false" onAction="#addToCurrentOrder" prefHeight="31.0" prefWidth="130.0" text="Add to Order">
          <font>
             <Font size="18.0" />
          </font>

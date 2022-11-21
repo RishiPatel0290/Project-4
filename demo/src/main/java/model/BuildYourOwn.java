@@ -36,4 +36,10 @@ public class BuildYourOwn extends Pizza{
         return  price;
 
     }
+
+
+    @Override
+    public String toString() {
+        return "Build Your Own "+getToppings().toString()+", "+getSize().toString().toLowerCase()+", "+price();
+    }
 }
