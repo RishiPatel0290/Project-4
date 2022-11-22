@@ -198,8 +198,11 @@ public class ChicagoStyleController implements Initializable {
             pizza.setToppings(new ArrayList<Topping>());
 
         }
-        for(String top: selectedToppings.getItems()){
-            pizza.getToppings().add(new Topping(top));
+
+        if(!chicagoFlavors.getValue().equalsIgnoreCase("Build Your Own")){
+            for(String top: selectedToppings.getItems()){
+                pizza.getToppings().add(new Topping(top));
+            }
         }
 
 
@@ -282,8 +285,9 @@ public class ChicagoStyleController implements Initializable {
         String selectedTopping = availableChicagoToppings.getSelectionModel().getSelectedItem();
         if(selectedTopping==null){
             return;
-
         }
+
+        // checks if same topping is already selected
         for(String item : selectedToppings.getItems()){
             boolean found = false;
 
@@ -292,34 +296,30 @@ public class ChicagoStyleController implements Initializable {
             }
         }
 
-        selectedToppings.getItems().add(selectedTopping);
-
-
-        if(pizza.getToppings()==null) {
-            pizza.setToppings(new ArrayList<Topping>());
-        }
-
 
 
         // make alert if we have more than 7 toppings
-        if(chicagoFlavors.getValue().equalsIgnoreCase("Build your own") && pizza.getToppings().size()>=6){
+        if(chicagoFlavors.getValue().equalsIgnoreCase("Build your own") && selectedToppings.getItems().size()>=7){
             // show alert
-
+            System.out.println("ENOUGH TOPPINGS ADDED!!!");
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ToppingAlert-view.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("Topping Alert");
             stage.setScene(scene);
             stage.show();
-
-
             return;
         }
 
+        selectedToppings.getItems().add(selectedTopping);
+        if(chicagoFlavors.getValue().equalsIgnoreCase("Build your own")){
+            if(pizza.getToppings()==null){
+                pizza.setToppings(new ArrayList<Topping>());
+            }
 
-        pizza.getToppings().add(new Topping(selectedTopping));
+            pizza.getToppings().add(new Topping(selectedTopping));
 
-
+        }
         updatePrice();
 
 

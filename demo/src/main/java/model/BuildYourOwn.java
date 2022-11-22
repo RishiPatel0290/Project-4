@@ -28,7 +28,6 @@ public class BuildYourOwn extends Pizza{
         }else{
             price+=LARGE_PRICE;
         }
-
         if(getToppings()!=null) {
             price+= (getToppings().size()*1.59);
         }
@@ -41,6 +40,9 @@ public class BuildYourOwn extends Pizza{
 
     @Override
     public String toString() {
+        if(getToppings().size()==0){
+            return "Build Your Own -- No Toppings --"+", "+getSize().toString().toLowerCase()+", "+price();
+        }
         return "Build Your Own "+getToppings().toString()+", "+getSize().toString().toLowerCase()+", "+price();
     }
 }

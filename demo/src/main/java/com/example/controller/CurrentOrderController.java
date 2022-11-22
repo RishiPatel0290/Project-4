@@ -6,6 +6,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import model.Order;
 import model.Pizza;
+import model.StoreOrder;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,15 +49,12 @@ public class CurrentOrderController implements Initializable {
 
 
     public double calculateSalesTax(){ // based on 6.625% sales tax
-
         double salesTax =  (.06625) *calculateSubTotal();
-
         double scale = Math.pow(10, 2);
         return Math.round(salesTax * scale) / scale;
     }
 
     public double calculateOrderTotal(){
-
         double orderTotal = calculateSubTotal()+calculateSalesTax();
         double scale = Math.pow(10, 2);
         return Math.round(orderTotal * scale) / scale;
@@ -73,7 +71,6 @@ public class CurrentOrderController implements Initializable {
     }
 
     private void updateSalesTaxTextField(){
-
         if(currentOrder.getItems()!=null && currentOrder.getItems().size()>0){
             salesTaxTextField.setText(Double.toString(calculateSalesTax()));
         }else{
@@ -94,9 +91,7 @@ public class CurrentOrderController implements Initializable {
 
 
     private void updateListView(){
-
         if(currentOrder.getItems()!=null && currentOrder.getItems().size()>0){
-
             for(Pizza piz: currentOrder.getItems() ){
                 orderListView.getItems().add(piz.toString());
             }
@@ -117,18 +112,17 @@ public class CurrentOrderController implements Initializable {
 
     @FXML
     void addOrderToStoreOrders(ActionEvent event) {
-       // add currentOrder to StoreOrder db
-        //make new order to next order number is incremented by 1
+        if(orderListView.getItems().size()==0|| currentOrder.getItems()==null || currentOrder.getItems().size()==0){
+            return;
+        }
+        currentOrder.setTotalPrice(Double.parseDouble(orderTotalTextField.getText()));
+        StoreOrdersController.storeOrder.add(currentOrder);
         currentOrder = new Order();
     }
 
     @FXML
     void clearOrder(ActionEvent event) {
-
-
-        // list view is updated
         orderListView.getItems().clear();
-
         currentOrder.clearOrder();
         updateSalesTaxTextField();
         updateSubTotalTextField();
@@ -140,13 +134,12 @@ public class CurrentOrderController implements Initializable {
 
     @FXML
     void removePizzaFromOrder(ActionEvent event) {
-
+        if(orderListView.getSelectionModel().getSelectedIndex()==-1){
+            return;
+        }
         int pizzaToBeRemoved  = orderListView.getSelectionModel().getSelectedIndex();
         currentOrder.getItems().remove(pizzaToBeRemoved);
-        // list view is updated
         orderListView.getItems().remove(pizzaToBeRemoved);
-
-        // other fields are updated
         updateSalesTaxTextField();
         updateSubTotalTextField();
         updateOrderTotalTextField();

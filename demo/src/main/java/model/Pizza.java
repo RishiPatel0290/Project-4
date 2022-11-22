@@ -17,22 +17,6 @@ public abstract class Pizza implements Customizable {
         return toppings;
     }
 
-    public String getStringRep(){
-        String res = "";
-
-        for(int i = 0; i < toppings.size(); i++){
-            res += toppings.get(i).toString();
-            if(i < toppings.size()-1){
-                res+= ",";
-            }
-            res+=" ";
-        }
-
-        res+= this.size.name().toLowerCase()+", ";
-
-
-        return res;
-    }
 
     // getters & Setters
     public void setToppings(ArrayList<Topping> toppings) {

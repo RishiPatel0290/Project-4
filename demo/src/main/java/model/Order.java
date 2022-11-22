@@ -8,6 +8,15 @@ public class Order implements Customizable{
     static int orderTracker = STARTING_NUMBER;
     private int orderNumber;
 
+    private double totalPrice;
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
     private ArrayList<Pizza> orderedItems;
 
@@ -23,10 +32,6 @@ public class Order implements Customizable{
 
     public int getOrderNumber() {
         return orderNumber;
-    }
-
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
     }
 
 
@@ -53,4 +58,13 @@ public class Order implements Customizable{
         return this.orderedItems;
     }
 
+
+    @Override
+    public String toString() {
+        String rslt = "";
+
+
+
+        return rslt;
+    }
 }
