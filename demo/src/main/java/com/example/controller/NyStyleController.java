@@ -73,7 +73,7 @@ public class NyStyleController implements Initializable {
 
 
     private void updatePrice() {
-        nyPrice.setText(Double.toString(pizza.price()));
+        nyPrice.setText(String.format("%.2f", pizza.price()));
     }
 
     private Size getSize(){
@@ -274,7 +274,7 @@ public class NyStyleController implements Initializable {
             }
         }
 
-
+         pizza.setCrust(new Crust(nyCrust.getText()));
          CurrentOrderController.currentOrder.add(pizza);
          nyFlavorPicked(null);
 
