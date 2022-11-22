@@ -13,6 +13,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class that handles the Main-view.fxml file and displays content for the main page of the application
+ * @author Devam Patel, Rishi Patel
+ */
 public class MainViewController implements Initializable {
 
     @FXML
@@ -30,47 +34,36 @@ public class MainViewController implements Initializable {
 
 
     /**
-     *
-     * purpose: to set up  images
-     *
-     * */
+     * Initializes the beginning view of the fxml file for the relevant fields
+     * @param url default parameter for the method
+     * @param resourceBundle default parameter for the method
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try{
+
 
             Image chicago= new Image("file:src/images/chicago.png");
             chicagoStyle.setImage(chicago);
-        }catch (Exception e){
-            System.out.println(e.toString());
-        }
 
-        try{
 
             Image ny = new Image("file:src/images/nyc.png");
             nyStyle.setImage(ny);
-        }catch (Exception e){
-            System.out.println(e.toString());
-        }
 
-        try{
 
             Image shoppingCart= new Image("file:src/images/shoppingcart.png");
             currentOrders.setImage(shoppingCart);
-        }catch (Exception e){
-            System.out.println(e.toString());
-        }
-
-        try{
 
             Image store= new Image("file:src/images/store.png");
             storeOrders.setImage(store);
-        }catch (Exception e){
-            System.out.println(e.toString());
-        }
+
 
     }
 
-
+    /**
+     * Method opens the page for NY store of pizza upon the query of user
+     * @param event default parameter for action listener
+     * @throws IOException exception to handle loading fxml files
+     */
     @FXML
     void openNYWindow(ActionEvent event) throws IOException {
 
@@ -82,23 +75,28 @@ public class MainViewController implements Initializable {
         stage.show();
     }
 
-
+    /**
+     * Method opens the page for Chicago store of pizza upon the query of user
+     * @param event default parameter for action listener
+     * @throws IOException exception to handle loading fxml files
+     */
     @FXML
     void openChicagoWindow(ActionEvent event) throws IOException{
 
-        try{
-
-            Stage stage = new Stage();
+          Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ChicagoStyle-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("Chicago Style");
             stage.setScene(scene);
             stage.show();
-        }catch (Exception e ){
-            System.out.println(e.fillInStackTrace());
-        }
+
     }
 
+    /**
+     * Method opens the page for the current order of pizzas upon the query of user
+     * @param event default parameter for action listener
+     * @throws IOException exception to handle loading fxml files
+     */
     @FXML
     void openCurrentOrderWindow(ActionEvent event) throws IOException {
 
@@ -113,7 +111,11 @@ public class MainViewController implements Initializable {
     }
 
 
-
+    /**
+     * Method opens the page for the store orders upon the query of user
+     * @param event default parameter for action listener
+     * @throws IOException exception to handle loading fxml files
+     */
     @FXML
     void openStoreOrdersWindow(ActionEvent event) throws IOException {
         Stage stage = new Stage();

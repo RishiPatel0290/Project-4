@@ -10,6 +10,10 @@ import model.Pizza;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class to handle the CurrentOrder-view.fxml view and displays the order details with pricing
+ * @author Rishi Patel, Devam Patel
+ */
 public class CurrentOrderController implements Initializable {
 
     static Order currentOrder = new Order();
@@ -30,7 +34,10 @@ public class CurrentOrderController implements Initializable {
     @FXML
     private TextField subTotalTextField;
 
-
+    /**
+     * Calculates subtotal of the pizza depending on size, flavor, and toppings
+     * @return double subtotal price of the pizza
+     */
     private double calculateSubTotal(){
         double totalPrice = 0;
 
@@ -47,17 +54,27 @@ public class CurrentOrderController implements Initializable {
     }
 
 
+    /**
+     * Calculates the sale's tax for the current order
+     * @return double amount of money gone for sales tax which is 6.625%
+     */
     public double calculateSalesTax(){ // based on 6.625% sales tax
         return (.06625) *calculateSubTotal();
     }
 
+    /**
+     * Calculates the final total price of the total order with tax
+     * @return double total price of the order
+     */
     public double calculateOrderTotal(){
         double orderTotal = calculateSubTotal()+calculateSalesTax();
         return  orderTotal;
     }
 
 
-
+    /**
+     * Method to update the  view for the order total field
+     */
     private void updateOrderTotalTextField(){
         if(currentOrder.getItems()!=null && currentOrder.getItems().size()>0){
             orderTotalTextField.setText(String.format("%.2f", calculateOrderTotal()));
@@ -66,6 +83,9 @@ public class CurrentOrderController implements Initializable {
         }
     }
 
+    /**
+     * Method to update the  view for the sales tax field
+     */
     private void updateSalesTaxTextField(){
         if(currentOrder.getItems()!=null && currentOrder.getItems().size()>0){
             salesTaxTextField.setText(String.format("%.2f", calculateSalesTax()));
@@ -74,7 +94,9 @@ public class CurrentOrderController implements Initializable {
         }
     }
 
-
+    /**
+     * Method to update the  view for the order number field
+     */
     private void updateOrderNumberTextField(){
         if(currentOrder.getItems()!=null && currentOrder.getItems().size()>0){
             orderNumberTextField.setText(Integer.toString(currentOrder.getOrderNumber()));
@@ -84,8 +106,9 @@ public class CurrentOrderController implements Initializable {
     }
 
 
-
-
+    /**
+     * Method to update the list view of the pizzas and their details in current order
+     */
     private void updateListView(){
         if(currentOrder.getItems()!=null && currentOrder.getItems().size()>0){
             for(Pizza piz: currentOrder.getItems() ){
@@ -96,7 +119,9 @@ public class CurrentOrderController implements Initializable {
         }
     }
 
-
+    /**
+     * Method to update the view for the subtotal field
+     */
     private void updateSubTotalTextField(){
         if(currentOrder.getItems()!=null && currentOrder.getItems().size()>0){
             subTotalTextField.setText(String.format("%.2f", calculateSubTotal()));
@@ -105,7 +130,10 @@ public class CurrentOrderController implements Initializable {
         }
     }
 
-
+    /**
+     * Method that handles the "Place order" button and adds the order to store order
+     * @param event default parameter for action listener
+     */
     @FXML
     void addOrderToStoreOrders(ActionEvent event) {
         if(orderListView.getItems().size()==0|| currentOrder.getItems()==null || currentOrder.getItems().size()==0){
@@ -116,6 +144,10 @@ public class CurrentOrderController implements Initializable {
         currentOrder = new Order();
     }
 
+    /**
+     * Method that handles the "Clear order" button and clears the order and the fields in the view
+     * @param event default parameter for action listener
+     */
     @FXML
     void clearOrder(ActionEvent event) {
         orderListView.getItems().clear();
@@ -127,7 +159,10 @@ public class CurrentOrderController implements Initializable {
     }
 
 
-
+    /**
+     * Method that handles "Remove pizza" button and removes the pizza from the current order
+     * @param event default parameter for action listener
+     */
     @FXML
     void removePizzaFromOrder(ActionEvent event) {
         if(orderListView.getSelectionModel().getSelectedIndex()==-1){
@@ -143,6 +178,11 @@ public class CurrentOrderController implements Initializable {
 
     }
 
+    /**
+     * Initializes the beginning view of the fxml file for the relevant fields
+     * @param url default parameter for the method
+     * @param resourceBundle default parameter for the method
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateListView();

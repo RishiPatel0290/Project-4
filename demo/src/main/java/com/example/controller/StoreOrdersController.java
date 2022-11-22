@@ -19,6 +19,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * This class controls the StoreOrders-view.fxml and manages the pizza orders
+ * @author Devam Patel, Rishi Patel
+ */
 public class StoreOrdersController implements Initializable {
 
     static StoreOrder storeOrder = new StoreOrder();
@@ -33,7 +37,9 @@ public class StoreOrdersController implements Initializable {
     private TextField orderTotal;
 
 
-
+    /**
+     * Private method that updates the combo box depending on orders added
+     */
     private void updateOrdersView(){
         ArrayList<Integer> updatedListOfOrderNumbers = new ArrayList<>();
         for(Order order: storeOrder.getStoreOrders()){
@@ -42,6 +48,10 @@ public class StoreOrdersController implements Initializable {
         orderNumberCombo.setItems(FXCollections.observableArrayList(updatedListOfOrderNumbers));
     }
 
+    /**
+     * Cancels the selected order from the list of orders in store orders
+     * @param event default parameter for action listener
+     */
     @FXML
     void cancelOrder(ActionEvent event) {
         Integer orderSelected = orderNumberCombo.getValue();
@@ -60,6 +70,10 @@ public class StoreOrdersController implements Initializable {
         }
     }
 
+    /**
+     * Method that handles the "export orders" button and writes all the order to a file in java/data/orders.txt
+     * @throws IOException exception to handle errors when writing to orders.txt file.
+     */
     @FXML
     public void exportOrders () throws IOException {
         File file = new File("src/main/java/data/orders.txt");
@@ -78,6 +92,11 @@ public class StoreOrdersController implements Initializable {
         fileWriter.close();
     }
 
+    /**
+     * return the Order instance with the given number
+     * @param number int number of the order that represents the Order instance
+     * @return the Order instance with the same order number property
+     */
     public Order getOrderByNumber(int number){
         for(Order order : storeOrder.getStoreOrders()){
             if(order.getOrderNumber()==number){
@@ -87,7 +106,10 @@ public class StoreOrdersController implements Initializable {
         return null;
     }
 
-
+    /**
+     * Adds value to the listview and the total order field of the view
+     * @param actionEvent default parameter for action listener
+     */
     public void updateOrderViewListAndTotal(ActionEvent actionEvent){
         orderListVIew.getItems().clear();
         if(orderNumberCombo.getValue()==null){
@@ -101,6 +123,12 @@ public class StoreOrdersController implements Initializable {
         orderTotal.setText(String.format("%.2f", order.getTotalPrice()));
     }
 
+
+    /**
+     * Initializes the beginning view of the fxml file for the relevant fields
+     * @param url default parameter for the method
+     * @param resourceBundle default parameter for the method
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ArrayList<Integer>orderNumbers = new ArrayList<>();

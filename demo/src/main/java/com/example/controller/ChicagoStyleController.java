@@ -16,6 +16,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * This class controls the ChicagoStyle-view.fxml and manages the pizza order for Chicago store
+ * @author Devam Patel, Rishi Patel
+ */
 public class ChicagoStyleController implements Initializable {
 
     @FXML
@@ -73,16 +77,10 @@ public class ChicagoStyleController implements Initializable {
     private Pizza pizza;
 
 
-
-
-
-
-    /** *
-     *
-     * Manipulates image
-     *
-     * */
-
+    /**
+     * Sets the image of the pizza depending on the flavor picked by the user
+     * @param flavor String representation of the flavor user queried.
+     */
     public void setChicagoPizzaImage(String flavor){
         String imageName;
         if(flavor.equalsIgnoreCase("Deluxe")){
@@ -101,34 +99,45 @@ public class ChicagoStyleController implements Initializable {
     }
 
 
-
-
+    /**
+     * sets the size property in Pizza object to small and calls update price
+     */
     @FXML
     public void smallSelected(){
         pizza.setSize(Size.SMALL);
         updatePrice();
     }
 
+    /**
+     * sets the size property in Pizza object to medium and calls update price
+     */
     @FXML
     public void mediumSelected(){
         pizza.setSize(Size.MEDIUM);
         updatePrice();
     }
 
-
+    /**
+     * sets the size property in Pizza object to large and calls update price
+     */
     @FXML
     public void largeSelected(){
         pizza.setSize(Size.LARGE);
         updatePrice();
     }
 
-
+    /**
+     * Updates the price field in the fxml file and rounds the text to 2 decimal places
+     */
     private void updatePrice() {
         chicagoPrice.setText(String.format("%.2f", pizza.price()));
     }
 
 
-
+    /**
+     * Returns the size of current pizza
+     * @return Size instance that the pizza represents.
+     */
     private Size getSize(){
         if(small.isSelected()){
             return Size.SMALL;
@@ -140,13 +149,11 @@ public class ChicagoStyleController implements Initializable {
     }
 
 
-
-
     /**
-     *
-     * Set up list view, image, and  combo box
-     *
-     * */
+     * Initializes the beginning view of the fxml file for the relevant fields
+     * @param url default parameter for the method
+     * @param resourceBundle default parameter for the method
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // add & remove button disabled
@@ -163,8 +170,10 @@ public class ChicagoStyleController implements Initializable {
     }
 
 
-
-
+    /**
+     * Sets the crust field on the fxml view to its appropriate value
+     * @param flavor String representation of the flavor created
+     */
     private void setChicagoCrust(String flavor){
         if(flavor.equalsIgnoreCase("Deluxe")){
             chicagoCrust.setText("Deep Dish");
@@ -178,8 +187,10 @@ public class ChicagoStyleController implements Initializable {
     }
 
 
-
-
+    /**
+     * Adds the current pizza on the view to the ongoing order
+     * @param actionEvent default paramter for action listener
+     */
     public void addToCurrentOrder(ActionEvent actionEvent){
         if(pizza.getToppings()==null){
             pizza.setToppings(new ArrayList<Topping>());
@@ -195,9 +206,10 @@ public class ChicagoStyleController implements Initializable {
         chicagoFlavorPicked(null);
     }
 
-     /**
-      * when flavor is picked, image is updated
-      * */
+    /**
+     * Method that provides dynamic changes to the view upon the click of a different flavor by the user
+     * @param actionEvent default parameter for action listener
+     */
     @FXML
     public void chicagoFlavorPicked(ActionEvent actionEvent){
         String flavorPicked = chicagoFlavors.getValue();
@@ -224,8 +236,10 @@ public class ChicagoStyleController implements Initializable {
     }
 
 
-
-
+    /**
+     * Adds value and displays it under the "Selected Toppings" list view in the fxml file, based on the flavor selected
+     * @param flavor String representation of the flavor
+     */
     private void setSelectedToppings(String flavor) {
         if(flavor.equalsIgnoreCase("Build your own")){
             selectedToppings.getItems().clear();
@@ -245,11 +259,11 @@ public class ChicagoStyleController implements Initializable {
     }
 
 
-
     /**
-     *
-     * when ">>" is clicked topping is added to selected toppings
-     * */
+     * Method that listens to for ">>" button and adds the topping to the pizza
+     * @param actionEvent default parameter for action listener
+     * @throws IOException exception to handle any errors for loading fxml files.
+     */
     @FXML
     public void addTopping(ActionEvent actionEvent) throws IOException {
         String selectedTopping = availableChicagoToppings.getSelectionModel().getSelectedItem();
@@ -265,7 +279,6 @@ public class ChicagoStyleController implements Initializable {
         }
         // make alert if we have more than 7 toppings
         if(chicagoFlavors.getValue().equalsIgnoreCase("Build your own") && selectedToppings.getItems().size()>=7){
-            System.out.println("ENOUGH TOPPINGS ADDED!!!");
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ToppingAlert-view.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(fxmlLoader.load());
@@ -286,10 +299,9 @@ public class ChicagoStyleController implements Initializable {
 
 
     /**
-     *
-     * when "<<" is selected topping is removed from selected toppings
-     * */
-
+     * Method to handle "<<" button and remove topping from the selected topics list view
+     * @param actionEvent default parameter for action listener
+     */
     @FXML
     public void removeTopping(ActionEvent actionEvent){
         String selectedTopping = selectedToppings.getSelectionModel().getSelectedItem();

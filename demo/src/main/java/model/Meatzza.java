@@ -1,5 +1,8 @@
 package model;
-
+/**
+ * This class serves as the model of a meatzza pizza and handles appropriate properties of the pizza.
+ * @author Devam Patel, Rishi Patel
+ */
 public class Meatzza extends Pizza{
 
     private final double SMALL_PRICE = 15.99;
@@ -8,16 +11,30 @@ public class Meatzza extends Pizza{
 
 
 
+    /**
+     * overrides the pizza class method for add
+     * @param obj Object to add to meatzza
+     * @return false, as no use in this case.
+     */
     @Override
     public boolean add(Object obj) {
         return false;
     }
 
+    /**
+     * overrides the pizza class method for remove
+     * @param obj Object to remove to meatzza
+     * @return false, as no use in this case.
+     */
     @Override
     public boolean remove(Object obj) {
         return false;
     }
 
+    /**
+     * computes the price of the pizza based on size
+     * @return double price of a meatzza pizza based on its size
+     */
     @Override
     public double price() {
         if(getSize()==Size.SMALL){
@@ -30,7 +47,10 @@ public class Meatzza extends Pizza{
 
     }
 
-
+    /**
+     * String representation of meatzza pizza
+     * @return String representation of a meatzza pizza with its crust, toppings, size, and price details
+     */
     @Override
     public String toString() {
         return "Meatzza ("+getCrust()+") "+getToppings().toString()+", "+getSize().toString().toLowerCase()+", "+price();

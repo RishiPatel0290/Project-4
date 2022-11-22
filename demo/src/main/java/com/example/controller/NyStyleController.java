@@ -17,12 +17,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * This class controls the NyStyle-view.fxml and manages the pizza order for NY store
+ * @author Devam Patel, Rishi Patel
+ */
 public class NyStyleController implements Initializable {
 
-
-    private final int SMALL = 1;
-    private final int MEDIUM = 2;
-    private final int LARGE = 3;
 
     @FXML
     private Button nyAddToOrder;
@@ -72,10 +72,17 @@ public class NyStyleController implements Initializable {
     private Pizza pizza;
 
 
+    /**
+     * Updates the price field in the fxml file and rounds the text to 2 decimal places
+     */
     private void updatePrice() {
         nyPrice.setText(String.format("%.2f", pizza.price()));
     }
 
+    /**
+     * Returns the size of current pizza
+     * @return Size instance that the pizza represents.
+     */
     private Size getSize(){
         if(nySmall.isSelected()){
             return Size.SMALL;
@@ -86,6 +93,10 @@ public class NyStyleController implements Initializable {
         }
     }
 
+    /**
+     * Sets the crust field on the fxml view to its appropriate value
+     * @param flavor String representation of the flavor created
+     */
     private void setNyCrust(String flavor){
         if(flavor.equalsIgnoreCase("Deluxe")){
             nyCrust.setText("Brooklyn");
@@ -98,6 +109,10 @@ public class NyStyleController implements Initializable {
         }
     }
 
+    /**
+     * Adds value and displays it under the "Selected Toppings" list view in the fxml file, based on the flavor selected
+     * @param flavor String representation of the flavor
+     */
     private void setNySelectedToppings(String flavor) {
         if(flavor.equalsIgnoreCase("Build your own")){
             nySelectedToppings.getItems().clear();
@@ -116,20 +131,27 @@ public class NyStyleController implements Initializable {
         }
     }
 
-
+    /**
+     * sets the size property in Pizza object to small and calls update price
+     */
     @FXML
     public void nySmallSelected(){
         pizza.setSize(Size.SMALL);
         updatePrice();
     }
 
+    /**
+     * sets the size property in Pizza class to medium and calls update price
+     */
     @FXML
     public void nyMediumSelected(){
         pizza.setSize(Size.MEDIUM);
         updatePrice();
     }
 
-
+    /**
+     * sets the size property in Pizza object to large and calls update price
+     */
     @FXML
     public void nyLargeSelected(){
         pizza.setSize(Size.LARGE);
@@ -137,6 +159,10 @@ public class NyStyleController implements Initializable {
     }
 
 
+    /**
+     * Sets the image of the pizza depending on the flavor picked by the user
+     * @param flavor String representation of the flavor user queried.
+     */
     public void setNyPizzaImage(String flavor) {
         String imageName;
         if(flavor.equalsIgnoreCase("Deluxe")){
@@ -156,7 +182,11 @@ public class NyStyleController implements Initializable {
 
     }
 
-
+    /**
+     * Initializes the beginning view of the fxml file for the relevant fields
+     * @param url default parameter for the method
+     * @param resourceBundle default parameter for the method
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nyAddButton.setDisable(true);
@@ -184,6 +214,10 @@ public class NyStyleController implements Initializable {
         nyAddToOrder.setDisable(true);
     }
 
+    /**
+     * Method that provides dynamic changes to the view upon the click of a different flavor by the user
+     * @param actionEvent default parameter for action listener
+     */
     @FXML
     public void nyFlavorPicked(ActionEvent actionEvent){
         String flavorPicked = nyFlavors.getValue();
@@ -216,6 +250,11 @@ public class NyStyleController implements Initializable {
 
     }
 
+    /**
+     * Method that listens to for ">>" button and adds the topping to the pizza
+     * @param actionEvent default parameter for action listener
+     * @throws IOException exception to handle any errors for loading fxml files.
+     */
     @FXML
     public void nyAddTopping(ActionEvent actionEvent) throws IOException {
         String selectedTopping = availableNyToppings.getSelectionModel().getSelectedItem();
@@ -251,6 +290,10 @@ public class NyStyleController implements Initializable {
 
     }
 
+    /**
+     * Method to handle "<<" button and remove topping from the selected topics list view
+     * @param actionEvent default parameter for action listener
+     */
     @FXML
     public void removeNyTopping(ActionEvent actionEvent){
         String selectedTopping = nySelectedToppings.getSelectionModel().getSelectedItem();
@@ -261,8 +304,12 @@ public class NyStyleController implements Initializable {
         updatePrice();
     }
 
+    /**
+     * Adds the current pizza on the view to the ongoing order
+     * @param actionEvent default paramter for action listener
+     */
     @FXML
-    public void nyAddToCurrentOrder(){
+    public void nyAddToCurrentOrder(ActionEvent actionEvent){
 
         if(pizza.getToppings()==null){
             pizza.setToppings(new ArrayList<Topping>());

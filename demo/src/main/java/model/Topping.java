@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * Class of toppings
+ * @author Devam patel
+ */
 public class Topping {
     String name;
     public Topping(String name){
