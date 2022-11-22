@@ -219,25 +219,15 @@ public class NyStyleController implements Initializable {
     @FXML
     public void nyAddTopping(ActionEvent actionEvent) throws IOException {
         String selectedTopping = availableNyToppings.getSelectionModel().getSelectedItem();
-        if(selectedTopping==null){
-            return;
-        }
+        if(selectedTopping==null){return;}
 
         for(String item : nySelectedToppings.getItems()){
             boolean found = false;
-
-            if(item.equalsIgnoreCase(selectedTopping)){
-                return;
-            }
+            if(item.equalsIgnoreCase(selectedTopping)){ return; }
 
         }
-        nySelectedToppings.getItems().add(selectedTopping);
 
-        if(pizza.getToppings()==null){
-            pizza.setToppings(new ArrayList<Topping>());
-        }
-
-        if(nyFlavors.getValue().equalsIgnoreCase("Build your own") && pizza.getToppings().size()>=6){
+        if(nyFlavors.getValue().equalsIgnoreCase("Build your own") && nySelectedToppings.getItems().size()>=7){
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ToppingAlert-view.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(fxmlLoader.load());
@@ -248,10 +238,16 @@ public class NyStyleController implements Initializable {
             return;
         }
 
-        // pizza.getToppings().add(new Topping(selectedTopping));
+        nySelectedToppings.getItems().add(selectedTopping);
+
+        if(nyFlavors.getValue().equalsIgnoreCase("Build Your Own")){
+            if(pizza.getToppings()==null){
+                pizza.setToppings(new ArrayList<Topping>());
+            }
+            pizza.getToppings().add(new Topping(selectedTopping));
+        }
 
         updatePrice();
-
 
     }
 
@@ -272,10 +268,11 @@ public class NyStyleController implements Initializable {
             pizza.setToppings(new ArrayList<Topping>());
         }
 
-
-         for(String top: nySelectedToppings.getItems()){
-             pizza.getToppings().add(new Topping(top));
-         }
+        if(!nyFlavors.getValue().equalsIgnoreCase("Build your own")) {
+            for (String top : nySelectedToppings.getItems()) {
+                pizza.getToppings().add(new Topping(top));
+            }
+        }
 
 
          CurrentOrderController.currentOrder.add(pizza);
