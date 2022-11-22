@@ -12,10 +12,8 @@ public class ChicagoPizza implements PizzaFactory{
 
     @Override
     public Pizza createMeatzza() {
-
         Meatzza meatzza = new Meatzza();
         return meatzza;
-
     }
 
     @Override
@@ -28,7 +26,6 @@ public class ChicagoPizza implements PizzaFactory{
     public Pizza createBuildYourOwn() {
         BuildYourOwn buildYourOwn = new BuildYourOwn();
         return buildYourOwn;
-
     }
 
 

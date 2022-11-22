@@ -7,11 +7,13 @@ public class Crust {
 
     private String crustName;
 
-    public String getCrustName() {
-        return crustName;
+    public Crust(String text) {
+        this.crustName = text;
     }
 
-    public void setCrustName(String crustName) {
-        this.crustName = crustName;
+
+    @Override
+    public String toString() {
+        return this.crustName;
     }
 }

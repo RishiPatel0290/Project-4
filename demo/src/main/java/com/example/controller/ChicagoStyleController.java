@@ -73,8 +73,6 @@ public class ChicagoStyleController implements Initializable {
     private Pizza pizza;
 
 
-    // need this to make Order obj global
-    private CurrentOrderController currentOrderController;
 
 
 
@@ -86,8 +84,6 @@ public class ChicagoStyleController implements Initializable {
      * */
 
     public void setChicagoPizzaImage(String flavor){
-
-
         String imageName;
         if(flavor.equalsIgnoreCase("Deluxe")){
             imageName = "chicagoDeluxe.png";
@@ -126,8 +122,9 @@ public class ChicagoStyleController implements Initializable {
         updatePrice();
     }
 
+
     private void updatePrice() {
-        chicagoPrice.setText(Double.toString(pizza.price()));
+        chicagoPrice.setText(String.format("%.2f", pizza.price()));
     }
 
 
@@ -152,26 +149,17 @@ public class ChicagoStyleController implements Initializable {
      * */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         // add & remove button disabled
         addButton.setDisable(true);
         removeButton.setDisable(true);
-
         // populate flavors
         chicagoFlavors.setItems(FXCollections.observableArrayList("Deluxe","BBQ Chicken","Meatzza","Build your own"));
-
         //populate available toppings
         availableChicagoToppings.getItems().addAll("Sausage", "pepperoni", "green pepper", "onion", "mushroom", "BBQ chicken", "provolone", "cheddar", "beef", "ham", "Pineapple", "Spinach", "Black olives");
-
         // set default image
         setChicagoPizzaImage("");
-
-
         // add to order must be disabled
         addToOrder.setDisable(true);
-
-
-
     }
 
 
@@ -193,24 +181,18 @@ public class ChicagoStyleController implements Initializable {
 
 
     public void addToCurrentOrder(ActionEvent actionEvent){
-
         if(pizza.getToppings()==null){
             pizza.setToppings(new ArrayList<Topping>());
-
         }
-
         if(!chicagoFlavors.getValue().equalsIgnoreCase("Build Your Own")){
             for(String top: selectedToppings.getItems()){
                 pizza.getToppings().add(new Topping(top));
             }
         }
-
-
+        pizza.setCrust(new Crust(chicagoCrust.getText()));
         CurrentOrderController.currentOrder.add(pizza);
         // have to make new pizza based on selected flavor
         chicagoFlavorPicked(null);
-
-
     }
 
      /**
@@ -218,13 +200,9 @@ public class ChicagoStyleController implements Initializable {
       * */
     @FXML
     public void chicagoFlavorPicked(ActionEvent actionEvent){
-
-
         String flavorPicked = chicagoFlavors.getValue();
-
         // set image based on flavor selected
         setChicagoPizzaImage(flavorPicked);
-
         if(flavorPicked.equalsIgnoreCase("deluxe")){
             pizza = pizzaFactory.createDeluxe();
         }else if(flavorPicked.equalsIgnoreCase("meatzza")){
@@ -234,22 +212,15 @@ public class ChicagoStyleController implements Initializable {
         }else {
             pizza = pizzaFactory.createBuildYourOwn();
         }
-
         // update default size which is small
         pizza.setSize(getSize());
         updatePrice();
-
-
         // crust is displayed
         setChicagoCrust(flavorPicked);
-
         // selected toppings showed on UI
         setSelectedToppings(flavorPicked);
-
-
         // have to enable add to order button
         addToOrder.setDisable(false);
-
     }
 
 
@@ -281,26 +252,19 @@ public class ChicagoStyleController implements Initializable {
      * */
     @FXML
     public void addTopping(ActionEvent actionEvent) throws IOException {
-
         String selectedTopping = availableChicagoToppings.getSelectionModel().getSelectedItem();
         if(selectedTopping==null){
             return;
         }
-
         // checks if same topping is already selected
         for(String item : selectedToppings.getItems()){
             boolean found = false;
-
             if(item.equalsIgnoreCase(selectedTopping)){
                 return;
             }
         }
-
-
-
         // make alert if we have more than 7 toppings
         if(chicagoFlavors.getValue().equalsIgnoreCase("Build your own") && selectedToppings.getItems().size()>=7){
-            // show alert
             System.out.println("ENOUGH TOPPINGS ADDED!!!");
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ToppingAlert-view.fxml"));
             Stage stage = new Stage();
@@ -310,22 +274,14 @@ public class ChicagoStyleController implements Initializable {
             stage.show();
             return;
         }
-
         selectedToppings.getItems().add(selectedTopping);
         if(chicagoFlavors.getValue().equalsIgnoreCase("Build your own")){
             if(pizza.getToppings()==null){
                 pizza.setToppings(new ArrayList<Topping>());
             }
-
             pizza.getToppings().add(new Topping(selectedTopping));
-
         }
         updatePrice();
-
-
-
-
-
     }
 
 

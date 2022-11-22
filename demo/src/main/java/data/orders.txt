@@ -1,15 +1,5 @@
 Order #1
-Meatzza [Sausage, pepperoni, Beef, Ham], small, 15.99
-Order Total: $17.05
-
-
-Order #2
-BBQ Chicken [BBQ chicken, green pepper, provolone, cheddar], small, 13.99
-Order Total: $14.92
-
-
-Order #3
-BBQ Chicken [BBQ chicken, green pepper, provolone, cheddar], small, 13.99
-Order Total: $14.92
+BBQ Chicken [BBQ chicken, green pepper, provolone, cheddar], large, 17.99
+Order Total: $19.18
 
 

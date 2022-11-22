@@ -98,7 +98,7 @@ public class StoreOrdersController implements Initializable {
         for(Pizza pizza:order.getItems()){
             orderListVIew.getItems().add(pizza.toString());
         }
-        orderTotal.setText(Double.toString(order.getTotalPrice()));
+        orderTotal.setText(String.format("%.2f", order.getTotalPrice()));
     }
 
     @Override

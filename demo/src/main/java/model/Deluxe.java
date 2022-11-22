@@ -40,6 +40,6 @@ public class Deluxe extends Pizza{
 
     @Override
     public String toString() {
-        return "Deluxe "+getToppings().toString()+", "+getSize().toString().toLowerCase()+", "+price();
+        return "Deluxe ("+getCrust()+") "+getToppings().toString()+", "+getSize().toString().toLowerCase()+", "+price();
     }
 }

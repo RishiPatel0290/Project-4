@@ -6,7 +6,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import model.Order;
 import model.Pizza;
-import model.StoreOrder;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,22 +48,19 @@ public class CurrentOrderController implements Initializable {
 
 
     public double calculateSalesTax(){ // based on 6.625% sales tax
-        double salesTax =  (.06625) *calculateSubTotal();
-        double scale = Math.pow(10, 2);
-        return Math.round(salesTax * scale) / scale;
+        return (.06625) *calculateSubTotal();
     }
 
     public double calculateOrderTotal(){
         double orderTotal = calculateSubTotal()+calculateSalesTax();
-        double scale = Math.pow(10, 2);
-        return Math.round(orderTotal * scale) / scale;
+        return  orderTotal;
     }
 
 
 
     private void updateOrderTotalTextField(){
         if(currentOrder.getItems()!=null && currentOrder.getItems().size()>0){
-            orderTotalTextField.setText(Double.toString(calculateOrderTotal()));
+            orderTotalTextField.setText(String.format("%.2f", calculateOrderTotal()));
         }else{
             orderTotalTextField.setText("");
         }
@@ -72,7 +68,7 @@ public class CurrentOrderController implements Initializable {
 
     private void updateSalesTaxTextField(){
         if(currentOrder.getItems()!=null && currentOrder.getItems().size()>0){
-            salesTaxTextField.setText(Double.toString(calculateSalesTax()));
+            salesTaxTextField.setText(String.format("%.2f", calculateSalesTax()));
         }else{
             salesTaxTextField.setText("");
         }
@@ -103,7 +99,7 @@ public class CurrentOrderController implements Initializable {
 
     private void updateSubTotalTextField(){
         if(currentOrder.getItems()!=null && currentOrder.getItems().size()>0){
-            subTotalTextField.setText(Double.toString(calculateSubTotal()));
+            subTotalTextField.setText(String.format("%.2f", calculateSubTotal()));
         }else{
             subTotalTextField.setText("");
         }

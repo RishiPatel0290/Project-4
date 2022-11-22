@@ -35,6 +35,6 @@ public class BBQChicken extends Pizza{
 
     @Override
     public String toString() {
-        return "BBQ Chicken "+getToppings().toString()+", "+getSize().toString().toLowerCase()+", "+price();
+        return "BBQ Chicken ("+getCrust()+") "+getToppings().toString()+", "+getSize().toString().toLowerCase()+", "+price();
     }
 }

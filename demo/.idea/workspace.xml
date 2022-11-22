@@ -5,20 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71948384-5208-4453-b1fd-5e5d08cb6759" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/outputData/orders.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/test/BuildYourOwnTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/ChicagoStyleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ChicagoStyleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/CurrentOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/CurrentOrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/StoreOrdersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/StoreOrdersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/orders.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/BBQChicken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/BBQChicken.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/BuildYourOwn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/BuildYourOwn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ChicagoPizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ChicagoPizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Crust.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Crust.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Deluxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Deluxe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Meatzza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Meatzza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Pizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Pizza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/StoreOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/StoreOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/controller/StoreOrders-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/controller/StoreOrders-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +32,8 @@
         <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -57,12 +60,16 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
     "last_directory_selection": "/Users/rishipatel/Documents/College/School_Subjects/Junior/Software Meth/Projects/Project4/Project-4/demo/src/main/resources/com/example/controller",
     "last_opened_file_path": "/Users/rishipatel/Documents/College/School_Subjects/Junior/Software Meth/Projects/Project4/Project-4/demo/src/main/resources/com/example/controller",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -79,13 +86,19 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/example/demo/images" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.controller" />
       <recent name="controller" />
       <recent name="com.example.demo" />
     </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="test" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.HelloApplication">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -101,9 +114,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BuildYourOwnTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.BuildYourOwnTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BuildYourOwnTest.price" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.BuildYourOwnTest" />
+      <option name="METHOD_NAME" value="price" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="JUnit.BuildYourOwnTest" />
+        <item itemvalue="JUnit.BuildYourOwnTest.price" />
       </list>
     </recent_temporary>
   </component>

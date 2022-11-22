@@ -43,6 +43,6 @@ public class BuildYourOwn extends Pizza{
         if(getToppings().size()==0){
             return "Build Your Own -- No Toppings --"+", "+getSize().toString().toLowerCase()+", "+price();
         }
-        return "Build Your Own "+getToppings().toString()+", "+getSize().toString().toLowerCase()+", "+price();
+        return "Build Your Own ("+getCrust()+") "+getToppings().toString()+", "+getSize().toString().toLowerCase()+", "+price();
     }
 }
